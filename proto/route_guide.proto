@@ -1,0 +1,27 @@
+syntax="proto3";
+
+option go_package = "github.com/gosample/proto";
+option java_multiple_files = false;
+option java_package = "com.ayeminoo.androidgrpc.services.route_guide";
+
+service RouteGuide{
+  rpc GetFeature(Point) returns (Feature){}
+
+  rpc RouteChat(RouteNote) returns (stream RouteNote){}
+
+}
+
+message Point{
+  int32 lat = 1;
+  int32 lng = 2;
+}
+
+message Feature{
+  string name = 1;
+  Point location = 2;
+}
+
+message RouteNote{
+  Point location = 1;
+  string message = 2;
+}

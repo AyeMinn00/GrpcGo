@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "github.com/gosample/proto";
+option java_multiple_files = false;
+option java_package = "com.ayeminoo.androidgrpc.services.chat_service";
+
+service Chat{
+  rpc SendMessage (stream ChatMessage) returns (stream ResponseMessage);
+}
+
+message ChatMessage {
+  string user_id = 1;
+  string text = 2;
+}
+
+message ResponseMessage{
+  string msg_id = 1;
+  string user_id = 2;
+  string text = 3;
+}
